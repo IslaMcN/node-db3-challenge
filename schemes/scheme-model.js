@@ -10,11 +10,11 @@ module.exports = {
 };
 
 function find(){
-    return db('scheme')
+    return db('schemes')
 }
 
 function findByID(id){
-    return db('scheme')
+    return db('schemes')
     .where({ id }).first();
 }
 

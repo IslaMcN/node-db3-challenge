@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params.id;
 
   Schemes.findById(id)
   .then(scheme => {
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.get('/:id/steps', (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params.id;
 
   Schemes.findSteps(id)
   .then(steps => {
@@ -60,7 +60,7 @@ router.post('/', (req, res) => {
 
 router.post('/:id/steps', (req, res) => {
   const stepData = req.body;
-  const { id } = req.params; 
+  const { id } = req.params.id; 
 
   Schemes.findById(id)
   .then(scheme => {
@@ -79,7 +79,7 @@ router.post('/:id/steps', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params.id;
   const changes = req.body;
 
   Schemes.findById(id)
@@ -99,7 +99,7 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params.id;
 
   Schemes.remove(id)
   .then(deleted => {

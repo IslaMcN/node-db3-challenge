@@ -1,8 +1,10 @@
-const db = require('../data/seeds/01-schemes')
+const db = require('../data/seeds/01-schemes');
+const config = require('../knexfile');
+const knex = require('knex');
 
 module.exports = {
     find,
-    findByID,
+    findById,
     findSteps,
     add,
     update,
@@ -13,7 +15,7 @@ function find(){
     return db('schemes')
 }
 
-function findByID(id){
+function findById(id){
     return db('schemes')
     .where({ id }).first();
 }
@@ -26,9 +28,9 @@ function findSteps(id){
 }
 
 function add(scheme){
-    return db('scheme').insert(scheme, 'id' )
-    .then(([id]) => {
-        return findByID(id)
+  db('schemes').insert(scheme)
+    .then(ids => {
+        return findById(ids[0]);
     });
 }
 
